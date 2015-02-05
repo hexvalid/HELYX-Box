@@ -1,0 +1,43 @@
+import subprocess
+
+from i3pystatus import Status
+
+status = Status(standalone=True)
+
+status.register("clock",
+    format="saat %H:%M",)
+#https://media.readthedocs.org/pdf/i3pystatus/latest/i3pystatus.pdf
+status.register("clock",
+    format="tarih %d.%m.%y",)
+#
+
+#status.register("disk",
+#	path="/",
+#	format="{avail}G",
+#	display_limit=26.000,)
+
+#status.register("mpd",
+#    format=" {artist}  {status}  {title} ",
+#    status={
+#        "pause": "",
+#        "play": "",
+#        "stop": " ",
+#    },)"
+
+#status.register("alsa",
+#	format="   {volume} ",
+#	format_muted="   {volume} ",)
+
+
+
+status.register("alsa",
+format="ses {volume}",)
+
+
+status.register("battery",
+format="pil {percentage:.0f}]",
+alert=True,
+alert_percentage=5,)
+#buda olabilir [{percentage_design:.2f}%
+
+status.run()

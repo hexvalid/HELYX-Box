@@ -1,0 +1,269 @@
+### i3 config ### 
+### erkanmdr'nin i3 konfigürasyon dosyası
+### hasan'nın config'inden taban alınmıştır
+### son düzenleme : 02.02.15
+
+set $mod Mod4
+
+# ÇALIŞMA ALANLARI 
+
+	set $WS1 1taban
+	set $WS2 2web
+	set $WS3 3dosya
+	set $WS4 4programlama
+	set $WS5 5tasarım
+	set $WS6 6terminal
+	set $WS7 7alfa
+	set $WS8 8beta
+	set $WS9 9omega
+
+# YAZITİPİ
+
+	font pango:bitocrafull, icons 9
+
+# RENKLER
+
+	client.focused  	#009900 #007700 #ffffff #009900
+	client.unfocused 	#555555 #555555 #555555 #555555
+	client.focused_inactive #555555 #555555 #333939 #555555
+	client.urgent		#2f343a #900000 #ffffff #900000
+
+# i3 BAR
+
+bar {
+	font           pango:bitocrafull, Icons 8
+	status_command python /home/erkanmdr/.i3/i3pystatus
+	#strip_workspace_numbers yes SAYILARI KALDIR İSİMLERDEN
+	height 12
+	position top
+
+	colors {
+		background #000000
+		statusline #ffffff
+		separator #bcbcbc
+
+		focused_workspace  #424242 #424242 #00ff00
+		active_workspace   #424242 #424242 #FFFFFF
+		inactive_workspace #424242 #424242 #FFFFFF
+		urgent_workspace   #424242 #424242 #FF0000
+    	}
+}
+
+
+
+# Float modifier is mod+mouse
+	floating_modifier $mod
+
+# TERMİNAL AÇ
+	bindsym $mod+Shift+T exec lxterminal --geometry=90x30
+
+# ODAKLANMIŞ PENCEREYİ KAPAT
+	bindsym $mod+shift+q kill
+
+# DMENU
+#	bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -b -nb '"#2F3033"' -i -fn 'Terminus-10' "
+#	bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -b -nb '"#2F3033"' -i -fn 'Terminus-10' "
+	bindsym $mod+d exec --no-startup-id dmenu_extended_run
+
+# PENCERE ODAĞINI DEĞİŞTİR
+	bindsym Control+Left focus left
+	bindsym Control+Down focus down
+	bindsym Control+Up focus up
+	bindsym Control+Right focus right
+
+# ODAKLANMIŞ PENCEREYİ TAŞI
+	bindsym $mod+Shift+Left move left
+	bindsym $mod+Shift+Down move down
+	bindsym $mod+Shift+Up move up
+	bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+	bindsym $mod+h split h
+
+# split in vertical orientation
+	bindsym $mod+v split v
+
+# ODAKLANMIŞ PENCEREYİ TAM EKRAN YAP
+	bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+	bindsym $mod+s layout stacking
+	bindsym $mod+w layout tabbed
+	bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+	bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+	bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+	bindsym $mod+a focus parent
+
+# focus the child container
+	#bindsym $mod+d focus child
+
+# switch to workspace
+	bindsym $mod+1 workspace $WS1
+	bindsym $mod+2 workspace $WS2
+	bindsym $mod+3 workspace $WS3
+	bindsym $mod+4 workspace $WS4
+	bindsym $mod+5 workspace $WS5
+	bindsym $mod+6 workspace $WS6
+	bindsym $mod+7 workspace $WS7
+	bindsym $mod+8 workspace $WS8
+	bindsym $mod+9 workspace $WS9
+
+# move focused container to workspace
+	bindsym $mod+Shift+1 move container to workspace $WS1
+	bindsym $mod+Shift+2 move container to workspace $WS2
+	bindsym $mod+Shift+3 move container to workspace $WS3
+	bindsym $mod+Shift+4 move container to workspace $WS4
+	bindsym $mod+Shift+5 move container to workspace $WS5
+	bindsym $mod+Shift+6 move container to workspace $WS6
+	bindsym $mod+Shift+7 move container to workspace $WS7
+	bindsym $mod+Shift+8 move container to workspace $WS8
+	bindsym $mod+Shift+9 move container to workspace $WS9
+
+# reload the configuration file
+	bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+	bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+	bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'i3 oturumundan çıkmak istiyor musunuz?' -b 'evet' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "boyutlandır" {
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+	bindsym $mod+r mode "boyutlandır"
+
+
+# WALLPAPER
+	exec --no-startup-id feh --bg-scale /home/erkanmdr/resimler/duvar.jpg
+
+# BAŞLANGIÇ UYGULAMALARI
+	exec --no-startup-id nm-applet
+	exec --no-startup-id conky
+	exec --no-startup-id sh /home/erkanmdr/eleven/ElevenReporter/run.sh
+	exec --no-startup-id synclient TouchpadOff=1
+	exec --no-startup-id compton --vsync opengl
+#	exec --no-startup-id nm-applet
+#	exec --no-startup-id xset -b
+#	exec --no-startup-id redshift-gtk
+#	exec --no-startup-id mpd
+
+### KOSTÜM KISAYOLLAR
+
+# UYGULAMA BAŞLATICI KISAYOLLAR
+
+	bindsym Control+1 exec chromium
+	bindsym Control+2 exec thunar
+#	bindsym Control+3 exec urxvt -e ncmpcpp 
+#	bindsym Control+4 exec skype
+#	bindsym Control+5 exec thunderbird
+#	bindsym Control+6 exec trackma-gtk
+#	bindsym $mod+End exec poweroff
+#	bindsym $mod+0xff50 exec systemctl suspend
+	bindsym $mod+c exec pkill conky && conky
+	bindsym $mod+Tab workspace next
+	bindsym $mod+Shift+Tab workspace prev
+	bindsym $mod+Left workspace prev
+	bindsym $mod+Right workspace next
+
+# PARLAKLIK
+
+	bindsym $mod+F6 exec --no-startup-id xbacklight -inc 12
+	bindsym $mod+F5 exec --no-startup-id xbacklight -dec 12
+	bindsym $mod+F4 exec --no-startup-id xbacklight -set 1
+
+# TOUCHPAD
+	bindsym $mod+Shift+F9 exec --no-startup-id synclient TouchpadOff=1
+	bindsym $mod+F9 exec --no-startup-id synclient TouchpadOff=0
+# SES
+
+	bindsym $mod+F12 exec --no-startup-id amixer set Master 5%+
+	bindsym $mod+F11 exec --no-startup-id amixer set Master 5%-
+	bindsym $mod+F10 exec --no-startup-id amixer -q set Master toggle
+#	bindsym XF86AudioPlay exec --no-startup-id mpc play
+#	bindsym XF86AudioStop exec --no-startup-id mpc pause
+#	bindsym XF86AudioPrev exec --no-startup-id mpc prev
+#	bindsym XF86AudioNext exec --no-startup-id mpc next
+
+# OTHER
+	bindsym $mod+x [urgent=latest] focus
+	bindsym --release Print exec --no-startup-id scrot '%Y-%m-%d$
+	new_window pixel 2
+	#hide_edge_borders vertical
+	new_float 1pixel
+	#workspace_auto_back_and_forth yes
+	bindsym $mod+t border pixel 2
+	bindsym $mod+y border 1pixel
+	bindsym $mod+u border pixel 3
+	exec --no-startup-id xset s 900 900
+	for_window [window_role="pop-up"] floating enable
+	for_window [window_role="task_dialog"] floating enable
+	for_window [class="Trackma-gtk"] floating enable
+	for_window [class="Lxterminal"] floating enable
+	for_window [class="Catfish"] floating enable
+
+
+# UYGULAMA VE ÇALIŞMA ALANI
+#	assign [class="^Firefox$"] → 1arch linux base
+	assign [class="^Chromium$"] → 2web
+#	assign [class="^mpv$"] → 3media
+#	assign [class="^Trackma-gtk$"] → 3media
+#	assign [class="^Hexchat$"] → 4chat
+#	assign [class="^Skype$"] → 4chat
+#	assign [class="^Thunderbird$"] → 5mail
+#	assign [class="^Deluge$"] → 6other
+
+# BOŞLUKLAR FALAN
+
+	gaps inner 3
+	gaps outer 1
+
+	set $mode_gaps Gaps: (1) outer, (2) inner
+	set $mode_gaps_outer Outer Gaps: 1|2|0 (local), Shift + 1|-|0 (global)
+	set $mode_gaps_inner Inner Gaps: 1|2|0 (local), Shift + 2|-|0 (global)
+	bindsym $mod+Shift+g mode "$mode_gaps"
+	mode "$mode_gaps" {
+		bindsym 1      mode "$mode_gaps_outer"
+		bindsym 2      mode "$mode_gaps_inner"
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+	}
+
+	mode "$mode_gaps_inner" {
+		bindsym 1  gaps inner current plus 5
+		bindsym 2 gaps inner current minus 5
+		bindsym 0     gaps inner current set 0
+
+		bindsym Shift+1  gaps inner all plus 5
+		bindsym Shift+2 gaps inner all minus 5
+		bindsym Shift+0     gaps inner all set 0
+
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+	}
+	mode "$mode_gaps_outer" {
+		bindsym 1  gaps outer current plus 5
+		bindsym 2 gaps outer current minus 5
+		bindsym 0     gaps outer current set 0
+
+		bindsym Shift+1  gaps outer all plus 5
+		bindsym Shift+2 gaps outer all minus 5
+		bindsym Shift+0     gaps outer all set 0
+
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+}
