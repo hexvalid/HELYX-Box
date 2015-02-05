@@ -1,0 +1,4 @@
+---------------------------------------
+USB belleği FAT32 Olarak biçimlendir:
+sudo sudo mkdosfs -F32 -v -I /dev/sdb
+---------------------------------------

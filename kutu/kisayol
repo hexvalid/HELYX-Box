@@ -1,0 +1,10 @@
+${color #00ff00} ctrl+1: ${color white}chromium
+${color #00ff00} ctrl+2: ${color white}thunar
+${color #00ff00} ctrl+3: ${color white}gimp
+${color #00ff00} ctrl+4: ${color white}inkscape
+${color #00ff00} ctrl+5: ${color white}keepassx
+${color #00ff00} ctrl+6: ${color white}freecad
+${color #00ff00} ctrl+7: ${color white}repetierhost
+${color #00ff00} ctrl+8: ${color white}x
+${color #00ff00} ctrl+9: ${color white}x
+${color #00ff00} ctrl+0: ${color white}x
