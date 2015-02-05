@@ -153,7 +153,7 @@ mode "boyutlandır" {
 
 # BAŞLANGIÇ UYGULAMALARI
 	exec --no-startup-id nm-applet
-	exec --no-startup-id conky
+	exec --no-startup-id conky -p 1
 	exec --no-startup-id sh /home/erkanmdr/eleven/ElevenReporter/run.sh
 	exec --no-startup-id synclient TouchpadOff=1
 	exec --no-startup-id compton --vsync opengl

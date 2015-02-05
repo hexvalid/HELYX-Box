@@ -38,11 +38,10 @@ maximum_width 222
 update_interval 1.0
 
 
-
 TEXT
 ${font}$nodename - $sysname $kernel on $machine
- ${color #00ff00}metabolik versiyon: ${color white}${execpi 100000 cat /home/erkanmdr/kutu/versiyon}
- ${color #00ff00}kurulu paket sayısı: ${color white}${execpi 100000 pacman -Q | wc -l}
+ ${color #00ff00}metabolik versiyon: ${color white}${pre_exec cat /home/erkanmdr/kutu/versiyon}
+ ${color #00ff00}kurulu paket sayısı: ${color white}${pre_exec pacman -Q | wc -l}
 ${color #bcbcbc}$hr
 ${color #bcbcbc}sistem yükü: ${stippled_hr}
 ${color #00ff00}ram:$color $mem/$memmax - $memperc% ${membar 4}
@@ -69,26 +68,24 @@ ${color #007700} ${top name 5} ${top pid 5} ${top cpu 5} ${top mem 5}
 ${color #005500} ${top name 6} ${top pid 6} ${top cpu 6} ${top mem 6}
 ${color #003300} ${top name 7} ${top pid 7} ${top cpu 7} ${top mem 7}
 ${color #001100} ${top name 8} ${top pid 8} ${top cpu 8} ${top mem 8}
-#####${color}$hr
-#####${color lightblue}kernel.org - ${kernel}${stippled_hr}
-#####${color}${scroll 42 2 ${rss http://www.kernel.org/kdist/rss.xml 10 item_titles 3 2}}
-#####${color lightblue}son güncellenen arch paketleri ${stippled_hr}
-#####${color}${rss http://www.archlinux.org/feeds/packages/ 10 item_titles 10 1}
 ${color #bcbcbc}$hr
 ${color #bcbcbc}eleven projesi raporu${stippled_hr}
-${color #00ff00}${execpi 300 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd}
+${color #00ff00}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd}
 ${color #bcbcbc}$hr
 ${color #bcbcbc}haberler${stippled_hr}
 ${color #00ff00}en son:
  ${color white}${scroll 42 8 ${rss http://www.ensonhaber.com/rss/ensonhaber.xml 5 item_titles 10} }
 ${color #00ff00}gündem:
  ${color white}${scroll 42 8 ${rss http://www.ensonhaber.com/rss/gundem.xml 5 item_titles 10} }
+${color #00ff00}arch linux:
+ ${color}${scroll 42 8 ${rss http://www.archlinux.org/feeds/news/ 10 item_titles 10 1} }
 ${color #bcbcbc}$hr
 ${color #bcbcbc}hava durumu${stippled_hr}
- ${color #00ff00}istanbul: ${color white}${execi 300  /home/erkanmdr/kutu/havadurumu.sh  318251 }
+ ${color #00ff00}istanbul: ${color white}${execi 600  /home/erkanmdr/kutu/havadurumu.sh  318251 }
 ${color #bcbcbc}$hr
 ${color #bcbcbc}kısayollar${stippled_hr}
-${color white}${execpi 100000 cat /home/erkanmdr/kutu/kisayol}
+${color white}${pre_exec cat /home/erkanmdr/kutu/kisayol}
 ${color #bcbcbc}$hr
 ${color #bcbcbc}todo listesi${stippled_hr}
-${color white}${execpi 100000 cat /home/erkanmdr/kutu/todo}
+${color white}${pre_exec cat /home/erkanmdr/kutu/todo}
+
