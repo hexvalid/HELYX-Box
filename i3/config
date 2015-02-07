@@ -153,11 +153,10 @@ mode "boyutlandır" {
 
 # BAŞLANGIÇ UYGULAMALARI
 	exec --no-startup-id nm-applet
-	exec --no-startup-id conky -p 1
 	exec --no-startup-id sh /home/erkanmdr/eleven/ElevenReporter/run.sh
 	exec --no-startup-id synclient TouchpadOff=1
 	exec --no-startup-id compton --vsync opengl
-#	exec --no-startup-id nm-applet
+	exec --no-startup-id conky
 #	exec --no-startup-id xset -b
 #	exec --no-startup-id redshift-gtk
 #	exec --no-startup-id mpd
@@ -229,7 +228,7 @@ mode "boyutlandır" {
 
 # BOŞLUKLAR FALAN
 
-	gaps inner 3
+	gaps inner 2
 	gaps outer 1
 
 	set $mode_gaps Gaps: (1) outer, (2) inner
@@ -245,7 +244,7 @@ mode "boyutlandır" {
 
 	mode "$mode_gaps_inner" {
 		bindsym 1  gaps inner current plus 5
-		bindsym 2 gaps inner current minus 5
+		bindsym 1 gaps inner current minus 5
 		bindsym 0     gaps inner current set 0
 
 		bindsym Shift+1  gaps inner all plus 5
@@ -257,7 +256,7 @@ mode "boyutlandır" {
 	}
 	mode "$mode_gaps_outer" {
 		bindsym 1  gaps outer current plus 5
-		bindsym 2 gaps outer current minus 5
+		bindsym 1 gaps outer current minus 5
 		bindsym 0     gaps outer current set 0
 
 		bindsym Shift+1  gaps outer all plus 5
@@ -267,3 +266,4 @@ mode "boyutlandır" {
 		bindsym Return mode "default"
 		bindsym Escape mode "default"
 }
+
