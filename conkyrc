@@ -41,7 +41,8 @@ update_interval 1.0
 TEXT
 ${font}$nodename - $sysname $kernel on $machine
  ${color #00ff00}metabolik versiyon: ${color white}${pre_exec cat /home/erkanmdr/kutu/versiyon}
- ${color #00ff00}kurulu paket sayısı: ${color white}${pre_exec pacman -Q | wc -l}
+ ${color #00ff00}toplam paket sayısı: ${color white}${pre_exec pacman -Q | wc -l}
+ ${color #00ff00}elle kurulan paket sayısı: ${color white}${pre_exec pacman -Qe | wc -l}
 ${color #bcbcbc}$hr
 ${color #bcbcbc}sistem yükü: ${stippled_hr}
 ${color #00ff00}ram:$color $mem/$memmax - $memperc% ${membar 4}
