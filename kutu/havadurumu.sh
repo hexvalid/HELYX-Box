@@ -9,7 +9,7 @@ METRIC=1 #Should be 0 or 1; 0 for F, 1 for C
 
 if [ -z $1 ]; then
     echo
-    echo "USAGE: weather.sh <locationcode>"
+    echo "USAGE: weather.sh <locationcode>!"
     echo
     exit 0;
 fi
