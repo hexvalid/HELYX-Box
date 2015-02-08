@@ -43,6 +43,9 @@ case "$cond" in
 'Mostly Cloudy')
    echo -n "parçalı bulutlu"
 ;;
+'Mostly Sunny')
+   echo -n "seyrek güneşli"
+;;
 'Clear')
    echo -n "açık"
 ;;

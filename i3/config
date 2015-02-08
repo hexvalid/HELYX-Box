@@ -148,7 +148,7 @@ mode "boyutlandır" {
 
 
 # WALLPAPER
-	exec --no-startup-id feh --bg-scale /home/erkanmdr/resimler/kedi.png
+	exec --no-startup-id feh --bg-scale /home/erkanmdr/resimler/kedi_bak.png
 
 # BAŞLANGIÇ UYGULAMALARI
 	exec --no-startup-id nm-applet
