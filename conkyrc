@@ -40,15 +40,15 @@ update_interval 1.0
 
 TEXT
 ${font}$nodename - $sysname $kernel on $machine
- ${color #00ff00}metabolik versiyon: ${color white}${pre_exec cat /home/erkanmdr/kutu/versiyon}
- ${color #00ff00}toplam paket sayısı: ${color white}${pre_exec pacman -Q | wc -l}
- ${color #00ff00}elle kurulan paket sayısı: ${color white}${pre_exec pacman -Qe | wc -l}
+ ${color #00ff00}metabolik versiyon: ${color white}${execpi 600 cat /home/erkanmdr/kutu/versiyon}
+ ${color #00ff00}toplam paket sayısı: ${color white}${execpi 600 pacman -Q | wc -l}
+ ${color #00ff00}elle kurulan paket sayısı: ${color white}${execpi 600 pacman -Qe | wc -l}
 ${color #bcbcbc}$hr
 ${color #bcbcbc}sistem yükü: ${stippled_hr}
-${color #00ff00}ram:$color $mem/$memmax - $memperc% ${membar 4}
-${color #00ff00}swap:$color $swap/$swapmax - $swapperc% ${swapbar 4}
-${color #00ff00}cpu:$color $cpu% ${cpubar 4}
-${color #00ff00}işlem sayısı:$color $processes  ${color #00ff00}aktif çalışan:$color $running_processes
+${color #00ff00} ram:$color $mem/$memmax - $memperc% ${membar 4}
+${color #00ff00} swap:$color $swap/$swapmax - $swapperc% ${swapbar 4}
+${color #00ff00} cpu:$color $cpu% ${cpubar 4}
+${color #00ff00} işlem sayısı:$color $processes  ${color #00ff00}aktif çalışan:$color $running_processes
 ${color #bcbcbc}$hr
 ${color #bcbcbc}dosya sistemleri: ${stippled_hr} ${color #00ff00}
  /root 	$color${fs_used /}/${fs_size /} ${fs_bar 4 /} ${color #00ff00}
@@ -60,7 +60,7 @@ ${color #bcbcbc}ağ: ${stippled_hr} ${color #00ff00}
  ${color #00ff00}wlp3s0 lokal ip adresi: ${color}${addr wlp3s0}
 ${color #bcbcbc}$hr
 ${color #bcbcbc}en aktif işlemler: ${stippled_hr}
-${color #00ff00}işlem              pid   cpu%   mem%
+${color #00ff00} işlem              pid   cpu%   mem%
 ${color #ffffff} ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
 ${color #dddddd} ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
 ${color #bbbbbb} ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
@@ -71,23 +71,36 @@ ${color #333333} ${top name 7} ${top pid 7} ${top cpu 7} ${top mem 7}
 ${color #111111} ${top name 8} ${top pid 8} ${top cpu 8} ${top mem 8}
 ${color #bcbcbc}$hr
 ${color #bcbcbc}eleven projesi raporu:${stippled_hr}
-${color #00ff00}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd}
+ ${color #00ff00}sağlık: ${color white}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 1'}
+ ${color #00ff00}i.m.p.: ${color white}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 2'}
+ ${color #00ff00}c.l.k.: ${color white}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 3'}
+ ${color #00ff00}g.k.: ${color white}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 4'}
+ ${color #00ff00}d.k.: ${color white}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 5'}
+ ${color #00ff00}a.k.: ${color white}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 6'}
+ ${color #00ff00}güncelleme: ${color white}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 7'}
 ${color #bcbcbc}$hr
 ${color #bcbcbc}haberler:${stippled_hr}
-${color #00ff00}en son:
+${color #00ff00} en son:
  ${color white}${scroll 42 8 ${rss http://www.ensonhaber.com/rss/ensonhaber.xml 5 item_titles 10} }
-${color #00ff00}gündem:
+${color #00ff00} gündem:
  ${color white}${scroll 42 8 ${rss http://www.ensonhaber.com/rss/gundem.xml 5 item_titles 10} }
-${color #00ff00}arch linux:
+${color #00ff00} arch linux:
  ${color}${scroll 42 8 ${rss http://www.archlinux.org/feeds/news/ 10 item_titles 10 1} }
 ${color #bcbcbc}$hr
 ${color #bcbcbc}hava durumu:${stippled_hr}
- ${color #00ff00}istanbul: ${color white}${execi 120  
-/home/erkanmdr/kutu/havadurumu.sh  318251 }
+ ${color #00ff00}istanbul: ${color white}${execi 120  /home/erkanmdr/kutu/havadurumu.sh  318251 }
 ${color #bcbcbc}$hr
 ${color #bcbcbc}kısayollar:${stippled_hr}
-${color white}${pre_exec cat /home/erkanmdr/kutu/kisayol}
+ ${color #00ff00}ctrl+1: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 1'}
+ ${color #00ff00}ctrl+2: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 2'}
+ ${color #00ff00}ctrl+3: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 3'}
+ ${color #00ff00}ctrl+4: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 4'}
+ ${color #00ff00}ctrl+5: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 5'}
+ ${color #00ff00}ctrl+6: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 6'}
+ ${color #00ff00}ctrl+7: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 7'}
+ ${color #00ff00}ctrl+8: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 8'}
+ ${color #00ff00}ctrl+9: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 9'}
+ ${color #00ff00}ctrl+0: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 10'}
 ${color #bcbcbc}$hr
 ${color #bcbcbc}todo listesi:${stippled_hr}
-${color white}${pre_exec cat /home/erkanmdr/kutu/todo}
-
+${color white}${execpi 600 cat /home/erkanmdr/kutu/todo}

@@ -13,7 +13,7 @@ set $mod Mod4
 	set $WS4 4programlama
 	set $WS5 5tasarım
 	set $WS6 6terminal
-	set $WS7 7alfag
+	set $WS7 7alfa
 	set $WS8 8beta
 	set $WS9 9omega
 
@@ -130,10 +130,12 @@ bar {
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 	bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-#	bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'i3 oturumundan çıkmak istiyor musunuz?' -b 'evet' 'conky'"
+	bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'i3 oturumundan çıkmak 
+istiyor musunuz?' -b 'evet' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "boyutlandır" {
+
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
@@ -148,7 +150,7 @@ mode "boyutlandır" {
 
 
 # WALLPAPER
-	exec --no-startup-id feh --bg-scale /home/erkanmdr/resimler/kedi.png
+	exec --no-startup-id feh --bg-scale /home/erkanmdr/resimler/duvar.jpg
 
 # BAŞLANGIÇ UYGULAMALARI
 	exec --no-startup-id nm-applet
@@ -225,7 +227,7 @@ mode "boyutlandır" {
 #	assign [class="^Deluge$"] → 6other
 
 # CONKY
-	exec --no-startup-id "sh -c 'sleep 3; exec conky'"
+        exec --no-startup-id conky
 
 # BOŞLUKLAR FALAN
 
