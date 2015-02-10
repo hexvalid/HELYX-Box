@@ -227,7 +227,7 @@ mode "boyutlandır" {
 #	assign [class="^Deluge$"] → 6other
 
 # BOOTSTRAP
-	exec --no-startup-id chromium --no-startup-window
+#	exec --no-startup-id chromium --no-startup-window
 
 
 # BOŞLUKLAR GAPS
