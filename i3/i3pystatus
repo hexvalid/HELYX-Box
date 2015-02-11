@@ -5,13 +5,11 @@ from i3pystatus import Status
 status = Status(standalone=True)
 
 status.register("clock",
-    format="%d.%m.%y    %H:%M",)
+    format="%d.%m.%y %H:%M",)
 #https://media.readthedocs.org/pdf/i3pystatus/latest/i3pystatus.pdf
 
 status.register("battery",
-format="%{percentage:.0f}]",
-alert=True,
-alert_percentage=5,)
+format="	%{percentage:.0f}]",)
 #buda olabilir [{percentage_design:.2f}%
 
 #

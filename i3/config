@@ -25,16 +25,16 @@ set $darkwhite   #f1edfb
 set $background  #133B47 #Arkaplan
 set $background_dark  #0d2931 #Durum çubuğu
 
-# ÇALIŞMA ALANLARI 
-	set $WS1 1taban
-	set $WS2 2web
-	set $WS3 3dosya
-	set $WS4 4programlama
-	set $WS5 5tasarım
-	set $WS6 6terminal
-	set $WS7 7alfag
-	set $WS8 8beta
-	set $WS9 9omega
+# ÇALIŞMA ALANLARI  https://www.dropbox.com/s/9iysh2i0gadi4ic/icons.pdf
+	set $WS1 1
+	set $WS2 2
+	set $WS3 3
+	set $WS4 4
+	set $WS5 5
+	set $WS6 6
+	set $WS7 7
+	set $WS8 8
+	set $WS9 9
 
 # YAZITİPİ
 
@@ -51,7 +51,7 @@ client.urgent           $red       $red       $white $red
 # i3 BAR
 
 bar {
-	font           pango:Roboto Medium 9
+	font           pango:Roboto Condensed Regular 9
 	status_command python /home/erkanmdr/.i3/i3pystatus
 	#strip_workspace_numbers yes SAYILARI KALDIR İSİMLERDEN
 	height 20
@@ -61,12 +61,12 @@ bar {
       colors {
                 statusline         #e5e5e5
                 background         $background_dark
-                separator          #aaaaaa
+                separator          $background_dark
  
 #                                  BORDER      BACKGROUND  TEXT
-                focused_workspace  $background $background $darkgreen
-                inactive_workspace $background $background $white
-                urgent_workspace   $red        $red        $background
+                focused_workspace  #0d2931 #0d2931 $darkgreen
+                inactive_workspace #0d2931 #0d2931 $white
+                urgent_workspace   $red        $red        $background_dark
         }
 }
 
@@ -248,7 +248,7 @@ force_display_urgency_hint 0 ms
 
 # UYGULAMA VE ÇALIŞMA ALANI
 #	assign [class="^Firefox$"] → 1arch linux base
-	assign [class="^Chromium$"] → 2web
+	assign [class="^Chromium$"] → 2
 #	assign [class="^mpv$"] → 3media
 #	assign [class="^Trackma-gtk$"] → 3media
 #	assign [class="^Hexchat$"] → 4chat
