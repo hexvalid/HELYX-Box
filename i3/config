@@ -5,8 +5,27 @@
 
 set $mod Mod4
 
-# ÇALIŞMA ALANLARI 
+ #RENK PALETİ
+set $black       #2c2836
+set $darkblack   #73707e
+set $red         #bb7473
+set $darkred     #cf9fa4
+set $green       #68b782
+set $darkgreen   #9acbad
+set $yellow      #abb773
+set $darkyellow  #c5cba4
+set $blue        #7865c5
+set $darkblue    #a396d9
+set $magenta     #bb65b6
+set $darkmagenta #cf96cf
+set $cyan        #68a8c5
+set $darkcyan    #9ac1d9
+set $white       #f1edfb
+set $darkwhite   #f1edfb
+set $background  #133B47 #Arkaplan
+set $background_dark  #0d2931 #Durum çubuğu
 
+# ÇALIŞMA ALANLARI 
 	set $WS1 1taban
 	set $WS2 2web
 	set $WS3 3dosya
@@ -23,30 +42,32 @@ set $mod Mod4
 
 # RENKLER
 
-	client.focused  	#009900 #007700 #ffffff #009900
-	client.unfocused 	#555555 #555555 #555555 #555555
-	client.focused_inactive #555555 #555555 #333939 #555555
-	client.urgent		#2f343a #900000 #ffffff #900000
+#                       BORDER     BACKGROUND TEXT   INDICATOR
+client.focused          $cyan      $cyan      $white $cyan
+client.unfocused        $darkcyan  $darkcyan  $white $darkcyan
+client.focused_inactive $darkcyan  $darkcyan  $white $darkcyan
+client.urgent           $red       $red       $white $red
 
 # i3 BAR
 
 bar {
-	font           pango:bitocrafull, Icons 8
+	font           pango:Roboto Medium 9
 	status_command python /home/erkanmdr/.i3/i3pystatus
 	#strip_workspace_numbers yes SAYILARI KALDIR İSİMLERDEN
-	height 12
+	height 20
+        strip_workspace_numbers yes
 	position top
 
-	colors {
-		background #000000
-		statusline #ffffff
-		separator #bcbcbc
-
-		focused_workspace  #424242 #424242 #00ff00
-		active_workspace   #424242 #424242 #FFFFFF
-		inactive_workspace #424242 #424242 #FFFFFF
-		urgent_workspace   #424242 #424242 #FF0000
-    	}
+      colors {
+                statusline         #e5e5e5
+                background         $background_dark
+                separator          #aaaaaa
+ 
+#                                  BORDER      BACKGROUND  TEXT
+                focused_workspace  $background $background $darkgreen
+                inactive_workspace $background $background $white
+                urgent_workspace   $red        $red        $background
+        }
 }
 
 
@@ -55,7 +76,7 @@ bar {
 	floating_modifier $mod
 
 # TERMİNAL AÇ
-	bindsym $mod+Shift+T exec lxterminal --geometry=90x30
+	bindsym $mod+Shift+T exec lxterminal 
 
 # ODAKLANMIŞ PENCEREYİ KAPAT
 	bindsym $mod+shift+q kill
@@ -84,7 +105,8 @@ bar {
 	bindsym $mod+v split v
 
 # ODAKLANMIŞ PENCEREYİ TAM EKRAN YAP
-	bindsym $mod+f fullscreen
+	bindsym $mod+f   fullscreen
+	bindsym $mod+p bar mode toggle
 
 # change container layout (stacked, tabbed, toggle split)
 	bindsym $mod+s layout stacking
@@ -126,9 +148,9 @@ bar {
 	bindsym $mod+Shift+9 move container to workspace $WS9
 
 # reload the configuration file
-	bindsym $mod+Shift+c reload
+	#bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-	bindsym $mod+Shift+r restart
+	bindsym $mod+Shift+r restartconk
 # exit i3 (logs you out of your X session)
 #	bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'i3 oturumundan çıkmak istiyor musunuz?' -b 'evet' 'conky'"
 
@@ -148,19 +170,19 @@ mode "boyutlandır" {
 
 
 # DUVAR KAĞIDI
-	exec --no-startup-id feh --bg-scale /home/erkanmdr/resimler/duvar.png
+	exec --no-startup-id feh --bg-scale /home/erkanmdr/resimler/roket.jpg
 
 # BAŞLANGIÇ UYGULAMALARI
 	exec --no-startup-id nm-applet
 	exec --no-startup-id "sh -c 'sleep 1.2; exec conky'"
-	exec --no-startup-id compton --vsync opengl
+	exec --no-startup-id compton -b
 	exec --no-startup-id sh /home/erkanmdr/eleven/ElevenReporter/run.sh
 	exec --no-startup-id synclient TouchpadOff=1
 #	exec --no-startup-id setleds -D -num < /dev/tty1
 #	exec --no-startup-id xset -b
 #	exec --no-startup-id redshift-gtk
 #	exec --no-startup-id mpd
-
+	
 ### KOSTÜM KISAYOLLAR
 
 # UYGULAMA BAŞLATICI KISAYOLLAR
@@ -174,6 +196,7 @@ mode "boyutlandır" {
 #	bindsym $mod+End exec poweroff
 #	bindsym $mod+0xff50 exec systemctl suspend
 	bindsym $mod+c exec pkill conky && conky
+	bindsym $mod+Shift+c exec killall compton && compton -b
 	bindsym $mod+Tab workspace next
 	bindsym $mod+Shift+Tab workspace prev
 	bindsym $mod+Left workspace prev
@@ -198,17 +221,24 @@ mode "boyutlandır" {
 #	bindsym XF86AudioPrev exec --no-startup-id mpc prev
 #	bindsym XF86AudioNext exec --no-startup-id mpc next
 
+#EKRAN FOTOĞRAFI
+	bindsym --release Print exec scrot $HOME/resimler/ekran/ekran-$(date +%Y-%m-%d).png
+	bindsym --release Shift+Print exec scrot -s $HOME/resimler/ekran/ekran-$(date +%Y-%m-%d).png
+
+
 # OTHER
 	bindsym $mod+x [urgent=latest] focus
-	bindsym --release Print exec --no-startup-id scrot '%Y-%m-%d$
-	new_window pixel 2
+	#bindsym --release Print exec --no-startup-id scrot '%Y-%m-%d$
+	#new_window pixel 2
 	#hide_edge_borders vertical
-	new_float 1pixel
+	#new_float 1pixel
 	#workspace_auto_back_and_forth yes
+force_display_urgency_hint 0 ms
+
 	bindsym $mod+t border pixel 2
 	bindsym $mod+y border 1pixel
 	bindsym $mod+u border pixel 3
-	exec --no-startup-id xset s 900 900
+	#exec --no-startup-id xset s 900 900
 	for_window [window_role="pop-up"] floating enable
 	for_window [window_role="task_dialog"] floating enable
 	for_window [class="Trackma-gtk"] floating enable
@@ -230,44 +260,65 @@ mode "boyutlandır" {
 #	exec --no-startup-id chromium --no-startup-window
 
 
+# fix graphics glitch
+for_window [class="^.*"] border pixel 0
+for_window [class="(?i)urxvt"] border pixel 3
+ 
+# dialogs
+for_window [class="(?i)gsimplecal"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+ 
+# other window specific settings
+for_window [class="(?i)pidgin" window_role="^conversation$"] resize grow width 0 px or 30 ppt
+ 
+
 # BOŞLUKLAR GAPS
+	set $default_gaps_inner 12
+	set $default_gaps_outer 12
+	gaps inner $default_gaps_inner
+	gaps outer $default_gaps_outer
 
-	gaps inner 2
-	gaps outer 1
-
-	set $mode_gaps Gaps: (1) outer, (2) inner
-	set $mode_gaps_outer Outer Gaps: 1|2|0 (local), Shift + 1|-|0 (global)
-	set $mode_gaps_inner Inner Gaps: 1|2|0 (local), Shift + 2|-|0 (global)
-	bindsym $mod+Shift+g mode "$mode_gaps"
-	mode "$mode_gaps" {
-		bindsym 1      mode "$mode_gaps_outer"
-		bindsym 2      mode "$mode_gaps_inner"
-		bindsym Return mode "default"
-		bindsym Escape mode "default"
-	}
-
-	mode "$mode_gaps_inner" {
-		bindsym 1  gaps inner current plus 5
-		bindsym 1 gaps inner current minus 5
-		bindsym 0     gaps inner current set 0
-
-		bindsym Shift+1  gaps inner all plus 5
-		bindsym Shift+2 gaps inner all minus 5
-		bindsym Shift+0     gaps inner all set 0
-
-		bindsym Return mode "default"
-		bindsym Escape mode "default"
-	}
-	mode "$mode_gaps_outer" {
-		bindsym 1  gaps outer current plus 5
-		bindsym 1 gaps outer current minus 5
-		bindsym 0     gaps outer current set 0
-
-		bindsym Shift+1  gaps outer all plus 5
-		bindsym Shift+2 gaps outer all minus 5
-		bindsym Shift+0     gaps outer all set 0
-
-		bindsym Return mode "default"
-		bindsym Escape mode "default"
+# DETAY GAPS
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|d|0 (local), Shift + +|-|d|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|d|0 (local), Shift + +|-|d|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+ 
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
 }
+ 
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+        bindsym d     gaps inner current set $default_gaps_inner
+ 
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+        bindsym Shift+d     gaps inner all set $default_gaps_inner
+ 
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+        bindsym d     gaps outer current set $default_gaps_outer
+ 
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+        bindsym Shift+d     gaps outer all set $default_gaps_outer
+ 
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
 
