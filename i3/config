@@ -79,7 +79,7 @@ bar {
 	bindsym $mod+Shift+T exec lxterminal 
 
 # ODAKLANMIŞ PENCEREYİ KAPAT
-	bindsym $mod+shift+q kill
+	bindsym $mod+q kill
 
 # DMENU
 #	bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -b -nb '"#2F3033"' -i -fn 'Terminus-10' "

@@ -1,106 +1,87 @@
-own_window yes
-own_window_class Conky
-own_window_type override
-double_buffer yes
+# Conky Google Now style #
 
-alignment tr
+# Conky settings #
 background no
-border_width 1
-stippled_borders 1 
-cpu_avg_samples 2
-default_color white
-default_outline_color white
-default_shade_color black
-draw_borders no
-draw_graph_borders yes
-draw_outline no
-draw_shades no
-use_xft yes
-font bitocrafull:size=8
-xftfont bitocrafull:size=8
-gap_x 5
-gap_y 18
-minimum_size 5 5
-net_avg_samples 2
+update_interval 1
+double_buffer yes
 no_buffers yes
-out_to_console no
-out_to_stderr no
-extra_newline no
-own_window_transparent yes
-own_window_hints undecorated,sticky,skip_taskbar,skip_pager
-stippled_borders 0
-update_interval 1.0
-uppercase no
-use_spacer none
-show_graph_scale yes
-show_graph_range yes
-maximum_width 222
-update_interval 1.0
 
+# Window specifications #
+own_window yes
+own_window_type override
+own_window_transparent no
+#own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_title 
+own_window_colour e5e5e5
+
+minimum_size 250 0
+maximum_width 250
+
+
+# Alignment #
+alignment tr
+gap_x 36
+gap_y 56
+
+#border_width 5
+border_inner_margin 10
+#border_outer_margin 10
+
+# Graphics settings #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+# Text settings #
+use_xft yes
+xftalpha 0
+xftfont Open Sans Light:size=10
+
+override_utf8_locale yes
+
+use_spacer none
+short_units yes
+pad_percents 2
+imlib_cache_size 0
+
+
+# Color scheme #
+default_color 666666
+
+color1 0099CC
+color2 9933CC
+color3 669900
+color4 FF8800
+color5 CC0000
+color6 AAAAAA
+color7 DDDDDD
 
 TEXT
-${font}$nodename - $sysname $kernel on $machine
- ${color #00ff00}metabolik versiyon: ${color white}${execpi 600 cat /home/erkanmdr/kutu/versiyon}
- ${color #00ff00}toplam paket sayısı: ${color white}${execpi 600 pacman -Q | wc -l}
- ${color #00ff00}elle kurulan paket sayısı: ${color white}${execpi 600 pacman -Qe | wc -l}
-${color #bcbcbc}$hr
-${color #bcbcbc}sistem yükü: ${stippled_hr}
-${color #00ff00} ram:$color $mem/$memmax - $memperc% ${membar 4}
-${color #00ff00} swap:$color $swap/$swapmax - $swapperc% ${swapbar 4}
-${color #00ff00} cpu:$color $cpu% ${cpubar 4}
-${color #00ff00} işlem sayısı:$color $processes  ${color #00ff00}aktif çalışan:$color $running_processes
-${color #bcbcbc}$hr
-${color #bcbcbc}dosya sistemleri: ${stippled_hr} ${color #00ff00}
- /root 	$color${fs_used /}/${fs_size /} ${fs_bar 4 /} ${color #00ff00}
- /home 	$color${fs_used /home}/${fs_size /home} ${fs_bar 4 /home}
-${color #bcbcbc}$hr
-${color #bcbcbc}ağ: ${stippled_hr} ${color #00ff00}
- up:$color ${upspeed wlp3s0} ${color #bcbcbc} - ${color #00ff00}down:$color ${downspeed wlp3s0}
- ${wireless_essid wlp3s0} ${wireless_bitrate wlp3s0} ${wireless_link_qual_perc wlp3s0}% ${color grey}${wireless_link_bar 4 wlp3s0}
- ${color #00ff00}wlp3s0 lokal ip adresi: ${color}${addr wlp3s0}
-${color #bcbcbc}$hr
-${color #bcbcbc}en aktif işlemler: ${stippled_hr}
-${color #00ff00} işlem              pid   cpu%   mem%
-${color #ffffff} ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
-${color #dddddd} ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
-${color #bbbbbb} ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
-${color #999999} ${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
-${color #777777} ${top name 5} ${top pid 5} ${top cpu 5} ${top mem 5}
-${color #555555} ${top name 6} ${top pid 6} ${top cpu 6} ${top mem 6}
-${color #333333} ${top name 7} ${top pid 7} ${top cpu 7} ${top mem 7}
-${color #111111} ${top name 8} ${top pid 8} ${top cpu 8} ${top mem 8}
-${color #bcbcbc}$hr
-${color #bcbcbc}eleven projesi raporu:${stippled_hr}
- ${color #00ff00}sağlık: ${color white}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 1'}
- ${color #00ff00}i.m.p.: ${color white}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 2'}
- ${color #00ff00}c.l.k.: ${color white}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 3'}
- ${color #00ff00}g.k.: ${color white}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 4'}
- ${color #00ff00}d.k.: ${color white}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 5'}
- ${color #00ff00}a.k.: ${color white}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 6'}
- ${color #00ff00}güncelleme: ${color white}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 7'}
-${color #bcbcbc}$hr
-${color #bcbcbc}haberler:${stippled_hr}
-${color #00ff00} en son:
- ${color white}${scroll 42 8 ${rss http://www.ensonhaber.com/rss/ensonhaber.xml 5 item_titles 10} }
-${color #00ff00} gündem:
- ${color white}${scroll 42 8 ${rss http://www.ensonhaber.com/rss/gundem.xml 5 item_titles 10} }
-${color #00ff00} arch linux:
- ${color}${scroll 42 8 ${rss http://www.archlinux.org/feeds/news/ 10 item_titles 10 1} }
-${color #bcbcbc}$hr
-${color #bcbcbc}hava durumu:${stippled_hr}
- ${color #00ff00}istanbul: ${color white}${execi 120  /home/erkanmdr/kutu/havadurumu.sh  318251 }
-${color #bcbcbc}$hr
-${color #bcbcbc}kısayollar:${stippled_hr}
- ${color #00ff00}ctrl+1: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 1'}
- ${color #00ff00}ctrl+2: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 2'}
- ${color #00ff00}ctrl+3: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 3'}
- ${color #00ff00}ctrl+4: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 4'}
- ${color #00ff00}ctrl+5: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 5'}
- ${color #00ff00}ctrl+6: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 6'}
- ${color #00ff00}ctrl+7: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 7'}
- ${color #00ff00}ctrl+8: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 8'}
- ${color #00ff00}ctrl+9: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 9'}
- ${color #00ff00}ctrl+0: ${color white}${execpi 600 cat /home/erkanmdr/kutu/kisayol | awk 'NR == 10'}
-${color #bcbcbc}$hr
-${color #bcbcbc}todo listesi:${stippled_hr}
-${color white}${execpi 600 cat /home/erkanmdr/kutu/todo}
+${image /home/luna/now.png -p 0,0 -s 250x144}${voffset 0}${font Open Sans Regular:pixelsize=16}${alignc}$nodename - $kernel @ $machine
+${offset 0}${color1}${font Open Sans Light:pixelsize=14}Metabolik Versiyon: ${color}${color2}${execpi 600 cat /home/erkanmdr/kutu/versiyon}${color}
+${offset 0}${color1}Toplam paket:${color}${color3} ${execpi 600 pacman -Q | wc -l} ${color}${alignr 4}${color1}Elle kurulan:${color}${color3} ${execpi 600 pacman -Qe | wc -l}${color}${alignr}
+${color7}${hr}${color}
+${voffset 0}${font Open Sans Light:pixelsize=20}${alignc}${time %d %B %Y}
+${voffset 0}${font Open Sans Light:pixelsize=40}${alignc}${time %H:%M}${font}
+${color7}${hr}${color}
+${voffset 0}${font Open Sans Regular:pixelsize=16}Sistem Yükü${font Open Sans Light:pixelsize=14}
+${offset 0}${color1}Açık kalma süresi: ${color}${color2}${uptime} ${color}
+${offset 0}${color1}RAM:${color}${color3} $mem/$memmax${color}${color} - ${color}${color2}%$memperc ${color} 
+${offset 0}${color1}CPU: ${color #FF8800}$cpu% ${cpugraph cpu0 14,193 FF8800 FF8800} 
+${color7}${hr}${color}
+${voffset 0}${font Open Sans Regular:pixelsize=16}Ağ${font Open Sans Light:pixelsize=14}${color}${color3}${font Open Sans Regular:pixelsize=9}  ${wireless_essid wlp3s0}
+${font Open Sans Light:pixelsize=14}${offset 0}${color1}UP:${color}${color3} ${upspeed wlp3s0} ${color}${alignr 4}${color1}DOWN:${color}${color3} ${downspeed wlp3s0}${color}${alignr}
+${offset 0}${color1}Sinyal gücü: ${color}${color2}%${wireless_link_qual_perc wlp3s0}${color}
+${offset 0}${color1}Lokal IP adresi: ${color}${color2}${addr wlp3s0}${color}
+${color7}${hr}${color}
+${voffset 0}${font Open Sans Regular:pixelsize=16}Eleven Projesi ${color}${color3}${font Open Sans Regular:pixelsize=9}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 1'}
+${offset 0}${color1}${font Open Sans Light:pixelsize=14}İmperasyon: ${color}${color2}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 2'}${color}${alignr 4}${offset 0}${color1}Click sayısı: ${color}${color2}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 3'}${color}
+${offset 0}${color1}${font Open Sans Light:pixelsize=14}Bugün: ${color}${color3}${alignr 4}${font Open Sans Regular:pixelsize=12}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 4'}${color}
+${offset 0}${color1}${font Open Sans Light:pixelsize=14}Dün: ${color}${color3}${alignr 4}${font Open Sans Regular:pixelsize=12}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 5'}${color}
+${offset 0}${color1}${font Open Sans Light:pixelsize=14}Son 30 gün: ${color}${color3}${alignr 4}${font Open Sans Regular:pixelsize=12}${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 6'}${color}
+${alignr}${font Open Sans Light:italic:pixelsize=11}                     Son güncelleme: ${execpi 600 cat /home/erkanmdr/eleven/ElevenReporter/ekran.lcd | awk 'NR == 7'}
+${color7}${hr}${color}
+${font}
+ÖNİZLEME VERSİYONU
+${color6}HELYX Box'un önizleme versiyonudur. ${color}

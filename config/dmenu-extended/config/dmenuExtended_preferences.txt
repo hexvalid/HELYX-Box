@@ -28,9 +28,9 @@
         "-sb",
         "#1f2428",
         "-fn",
-        "-*-roboto-medium-*-*-*-12-*-*-*-*-*-*-*",
+        "-*-roboto condensed-medium-r-*-*-17-120-100-*-*-0-iso8859-*",
         "-l",
-        "15"
+        "4"
     ],
     "scan_hidden_folders": false,
     "terminal": "lxterminal",
