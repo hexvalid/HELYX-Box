@@ -80,6 +80,7 @@ bar {
 
 # ODAKLANMIŞ PENCEREYİ KAPAT
 	bindsym $mod+q kill
+	bindsym $mod+Shift+q kill
 
 # DMENU
 #	bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -b -nb '"#2F3033"' -i -fn 'Terminus-10' "
