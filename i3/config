@@ -1,7 +1,9 @@
-### i3 config ### 
-### erkanmdr'nin i3 konfigürasyon dosyası
-### hasan'nın config'inden taban alınmıştır
-### son düzenleme : 02.02.15
+### i3 config ###
+### HELYX Box 
+### ErkanMDR'nin i3 konfigürasyon dosyası
+### Hasan'nın config'inden taban alınmıştır. Komple yeniden 
+tasarlanmıştır
+### son düzenleme : all_days
 
 set $mod Mod4
 
