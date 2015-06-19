@@ -1,4 +1,11 @@
-# HELYX Box
-Severely customized i3 (i3gaps), DMenu-Extended, Conky and i3pystatus configs. And includes several scripts in "kutu" folder. Designed on Arch Linux. New Material Theme
-![Lastest Screenshot](https://raw.githubusercontent.com/ErkanMDR/HELYXBox/069bee677cd34b6b6641e3fac7c1b696f5cbeac2/ss.png "Lastest Screenshot")
+HELYX Box
+===================
+> **Note:**
+> - This document currently only available Turkish. They will then be written in English. Thank you for your understanding.
+> - Döküman henüz tamamen bitmedi.
 
+
+Hey! Tamamen hızı ve verimliliği arttırmaya dayalı özelleştirilmiş bir işletim sistemi modikasyonu olan  **HELYX Box**'a bir göz at! Arch Linux tabanlı bu işletim sisteminin öntanımlı programlar aşağıda belirtilmiştir.
+> **Not:** öntanımlı programlar tamamen cli (konsol tabanlı) seçilecektir.
+
+----------
