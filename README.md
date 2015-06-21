@@ -19,3 +19,4 @@ Yapılacak Listesi
     Defaults lecture_file=/home/erkanmdr/Belgeler/kural
 
 ---------
+ncdu
