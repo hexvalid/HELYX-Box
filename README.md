@@ -11,6 +11,9 @@ Hey! Tamamen hızı ve verimliliği arttırmaya dayalı özelleştirilmiş bir i
 -------------
 Yapılacak Listesi
 ------------
+Kurulum:
+yaourt -S i3-gaps-next-git --noconfirm
+
 
 #### Her zaman sudo mesajı göster:
    */etc/sudoers* dosyasının içine bu satırlar eklenecek:
